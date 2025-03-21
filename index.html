@@ -121,19 +121,15 @@
         /* Button Styles */
         .toggle-btn {
             position: fixed;
-            top: 20px;
-            right: 20px;
-            background-color: #4CAF50;
+            top: 40px;
+            right: 40px;
+            background-color: black;
             color: white;
             padding: 10px 20px;
             border-radius: 5px;
             cursor: pointer;
-            font-size: 16px;
-            transition: background-color 0.3s;
-        }
-
-        .toggle-btn:hover {
-            background-color: #45a049;
+            font-size: 20px;
+            transition: background-color 0.5s;
         }
 
         /* Contact Me Section */
@@ -170,7 +166,7 @@
 <body class="light-mode">
 
     <!-- Light/Dark Mode Button -->
-    <button class="toggle-btn" onclick="toggleMode()">Light/Dark Mode</button>
+    <button class="toggle-btn" onclick="toggleMode()">Toggle theme</button>
 
     <!-- Art Section -->
     <div class="container">
@@ -182,7 +178,7 @@
     <!-- Modal for Image Pop-up -->
     <div class="modal" id="modal">
         <div class="modal-content" id="modalContent">
-            <button class="close-modal" onclick="closeModal()">X</button>
+            <button class="close-modal" onclick="closeModal()">❌</button>
             <img id="modalImage" src="" alt="Art Image">
             <div class="modal-description" id="modalDescription"></div>
         </div>
