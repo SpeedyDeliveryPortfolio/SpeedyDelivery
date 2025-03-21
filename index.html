@@ -47,11 +47,13 @@
             border-radius: 10px;
             overflow: hidden;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-            transition: transform 0.2s ease-in-out;
+            transition: transform 0.2s ease-in-out, border 0.2s ease-in-out;
+            border: 5px solid transparent; /* Transparent border for default state */
         }
 
         .art-piece:hover {
             transform: scale(1.05);
+            border: 5px solid black; /* Black border on hover */
         }
 
         .art-piece img {
@@ -73,19 +75,19 @@
         }
 
         /* Modal */
-.modal {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    display: none;
-    justify-content: center;
-    align-items: center;
-    background-color: rgba(0, 0, 0, 0.7);
-    z-index: 10; /* Add this */
-}
-
+        .modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: none;
+            justify-content: center;
+            align-items: center;
+            background-color: rgba(0, 0, 0, 0.7);
+            z-index: 10; /* Add this */
+            overflow: hidden;
+        }
 
         .modal-content {
             background-color: inherit; /* Same as the theme */
@@ -95,6 +97,12 @@
             text-align: center;
             overflow: hidden;
             position: relative;
+            transform: translateY(-100%); /* Start with modal off-screen */
+            transition: transform 0.5s ease-in-out;
+        }
+
+        .modal-content.show {
+            transform: translateY(0); /* Slide down when modal is active */
         }
 
         .modal-content img {
@@ -134,16 +142,16 @@
         }
 
         /* Contact Me Section */
-.contact-section {
-    margin-top: 50px;
-    text-align: center;
-    padding: 20px;
-    background-color: #333;
-    color: white;
-    width: 100%;
-    position: relative;
-    z-index: 1; /* Add this */
-}
+        .contact-section {
+            margin-top: 50px;
+            text-align: center;
+            padding: 20px;
+            background-color: #333;
+            color: white;
+            width: 100%;
+            position: relative;
+            z-index: 1; /* Add this */
+        }
 
         .contact-icons {
             display: flex;
@@ -247,6 +255,7 @@
             const modal = document.getElementById('modal');
             const modalContent = document.getElementById('modalContent');
             modal.style.display = 'flex';
+            modalContent.classList.add('show');
             document.getElementById('modalImage').src = image;
             document.getElementById('modalDescription').textContent = description;
 
@@ -263,6 +272,7 @@
         // Close modal
         function closeModal() {
             document.getElementById('modal').style.display = 'none';
+            document.getElementById('modalContent').classList.remove('show');
         }
 
         // Initial load
